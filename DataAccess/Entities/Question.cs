@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace DataAccess.Entities
+{
+    public class Question : BaseEntity
+    {
+        public int QUESTION_ID { get; set; }
+        public int? QUESTION_TYPE { get; set; }
+        public string QUESTION_CONTENT { get; set; }
+        public int? PART_ID { get; set; }
+        public int LELVEL { get; set; }
+    }
+}
