@@ -23,6 +23,7 @@ namespace Ielts_Platform
 
         public void ConfigureServices(IServiceCollection services)
         {
+            
             services.AddDbContext<IeltsDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("IeltsDatabase")));
             services.AddControllers();

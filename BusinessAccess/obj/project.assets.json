@@ -7244,11 +7244,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Ielts_Platform\\Ielts_Platform\\BusinessAccess\\BusinessAccess.csproj",
+      "projectUniqueName": "D:\\Ielts\\Ielts_Platform\\BusinessAccess\\BusinessAccess.csproj",
       "projectName": "BusinessAccess",
-      "projectPath": "D:\\Ielts_Platform\\Ielts_Platform\\BusinessAccess\\BusinessAccess.csproj",
+      "projectPath": "D:\\Ielts\\Ielts_Platform\\BusinessAccess\\BusinessAccess.csproj",
       "packagesPath": "C:\\Users\\ken17\\.nuget\\packages\\",
-      "outputPath": "D:\\Ielts_Platform\\Ielts_Platform\\BusinessAccess\\obj\\",
+      "outputPath": "D:\\Ielts\\Ielts_Platform\\BusinessAccess\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ken17\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -7265,11 +7265,11 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "D:\\Ielts_Platform\\Ielts_Platform\\DataAccess\\DataAccess.csproj": {
-              "projectPath": "D:\\Ielts_Platform\\Ielts_Platform\\DataAccess\\DataAccess.csproj"
+            "D:\\Ielts\\Ielts_Platform\\DataAccess\\DataAccess.csproj": {
+              "projectPath": "D:\\Ielts\\Ielts_Platform\\DataAccess\\DataAccess.csproj"
             },
-            "D:\\Ielts_Platform\\Ielts_Platform\\DataModel\\DataModel.csproj": {
-              "projectPath": "D:\\Ielts_Platform\\Ielts_Platform\\DataModel\\DataModel.csproj"
+            "D:\\Ielts\\Ielts_Platform\\DataModel\\DataModel.csproj": {
+              "projectPath": "D:\\Ielts\\Ielts_Platform\\DataModel\\DataModel.csproj"
             }
           }
         }

@@ -6727,11 +6727,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Ielts_Platform\\Ielts_Platform\\DataAccess\\DataAccess.csproj",
+      "projectUniqueName": "D:\\Ielts\\Ielts_Platform\\DataAccess\\DataAccess.csproj",
       "projectName": "DataAccess",
-      "projectPath": "D:\\Ielts_Platform\\Ielts_Platform\\DataAccess\\DataAccess.csproj",
+      "projectPath": "D:\\Ielts\\Ielts_Platform\\DataAccess\\DataAccess.csproj",
       "packagesPath": "C:\\Users\\ken17\\.nuget\\packages\\",
-      "outputPath": "D:\\Ielts_Platform\\Ielts_Platform\\DataAccess\\obj\\",
+      "outputPath": "D:\\Ielts\\Ielts_Platform\\DataAccess\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ken17\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Ielts_Platform\\Ielts_Platform\\DataModel\\DataModel.csproj",
+      "projectUniqueName": "D:\\Ielts\\Ielts_Platform\\DataModel\\DataModel.csproj",
       "projectName": "DataModel",
-      "projectPath": "D:\\Ielts_Platform\\Ielts_Platform\\DataModel\\DataModel.csproj",
+      "projectPath": "D:\\Ielts\\Ielts_Platform\\DataModel\\DataModel.csproj",
       "packagesPath": "C:\\Users\\ken17\\.nuget\\packages\\",
-      "outputPath": "D:\\Ielts_Platform\\Ielts_Platform\\DataModel\\obj\\",
+      "outputPath": "D:\\Ielts\\Ielts_Platform\\DataModel\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ken17\\AppData\\Roaming\\NuGet\\NuGet.Config",

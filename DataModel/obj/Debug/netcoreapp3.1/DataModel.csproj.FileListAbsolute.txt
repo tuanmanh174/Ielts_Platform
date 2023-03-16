@@ -12,3 +12,17 @@ D:\Ielts_Platform\Ielts_Platform\DataModel\obj\Debug\netcoreapp3.1\DataModel.csp
 D:\Ielts_Platform\Ielts_Platform\DataModel\obj\Debug\netcoreapp3.1\DataModel.dll
 D:\Ielts_Platform\Ielts_Platform\DataModel\obj\Debug\netcoreapp3.1\DataModel.pdb
 D:\Ielts_Platform\Ielts_Platform\DataModel\obj\Debug\netcoreapp3.1\DataModel.genruntimeconfig.cache
+D:\Ielts\Ielts_Platform\DataModel\bin\Debug\netcoreapp3.1\DataModel.exe
+D:\Ielts\Ielts_Platform\DataModel\bin\Debug\netcoreapp3.1\DataModel.deps.json
+D:\Ielts\Ielts_Platform\DataModel\bin\Debug\netcoreapp3.1\DataModel.runtimeconfig.json
+D:\Ielts\Ielts_Platform\DataModel\bin\Debug\netcoreapp3.1\DataModel.runtimeconfig.dev.json
+D:\Ielts\Ielts_Platform\DataModel\bin\Debug\netcoreapp3.1\DataModel.dll
+D:\Ielts\Ielts_Platform\DataModel\bin\Debug\netcoreapp3.1\DataModel.pdb
+D:\Ielts\Ielts_Platform\DataModel\obj\Debug\netcoreapp3.1\DataModel.csproj.AssemblyReference.cache
+D:\Ielts\Ielts_Platform\DataModel\obj\Debug\netcoreapp3.1\DataModel.GeneratedMSBuildEditorConfig.editorconfig
+D:\Ielts\Ielts_Platform\DataModel\obj\Debug\netcoreapp3.1\DataModel.AssemblyInfoInputs.cache
+D:\Ielts\Ielts_Platform\DataModel\obj\Debug\netcoreapp3.1\DataModel.AssemblyInfo.cs
+D:\Ielts\Ielts_Platform\DataModel\obj\Debug\netcoreapp3.1\DataModel.csproj.CoreCompileInputs.cache
+D:\Ielts\Ielts_Platform\DataModel\obj\Debug\netcoreapp3.1\DataModel.dll
+D:\Ielts\Ielts_Platform\DataModel\obj\Debug\netcoreapp3.1\DataModel.pdb
+D:\Ielts\Ielts_Platform\DataModel\obj\Debug\netcoreapp3.1\DataModel.genruntimeconfig.cache
