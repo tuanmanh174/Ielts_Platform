@@ -82,5 +82,19 @@ namespace BusinessAccess.System.User
         {
             throw new NotImplementedException();
         }
+
+        public async Task<List<UserListDTO>> GetUserLists()
+        {
+            var userListDTO = new List<UserListDTO>();
+            var lstUser =  _userManager.Users;
+            foreach(var item in lstUser)
+            {
+                var usertDTO = new UserListDTO();
+                usertDTO.Email = item.Email;
+                userListDTO.Add(usertDTO);
+            }
+            return  userListDTO;
+
+        }
     }
 }

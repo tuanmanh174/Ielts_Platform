@@ -26,7 +26,7 @@ namespace Ielts_Platform.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             var resultToken = await _userService.Authenticate(request);
-            return Ok(new { token = resultToken });
+            return Ok(resultToken);
         }
     }
 }

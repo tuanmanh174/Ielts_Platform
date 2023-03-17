@@ -32,5 +32,7 @@ namespace Ielts_Platform.Controllers
             var res = await _examService.GetListExam(keyWord, fromDate, toDate, status, examCode);
             return Ok(res);
         }
+
+        
     }
 }

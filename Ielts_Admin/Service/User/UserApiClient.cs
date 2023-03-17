@@ -25,9 +25,6 @@ namespace Ielts_Admin.Service
             client.BaseAddress = new Uri("https://localhost:44332");
             var response = await client.PostAsync("/api/user/authenticate", httpContent);
             var token = await response.Content.ReadAsStringAsync();
-            //JObject _json = JObject.Parse(token);
-            //var _token = (string)json.Tr<string>("token");
-            //dynamic __json = JsonConvert.DeserializeObject(token);
             var data = (JObject)JsonConvert.DeserializeObject(token);
             string __token = data["token"].Value<string>();
             return __token;
