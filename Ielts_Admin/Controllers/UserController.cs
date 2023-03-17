@@ -1,9 +1,17 @@
 ﻿using DataModel.User;
 using Ielts_Admin.Service;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Logging;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Ielts_Admin.Controllers
@@ -11,9 +19,11 @@ namespace Ielts_Admin.Controllers
     public class UserController : Controller
     {
         private readonly IUserApiClient _userApiClient;
-        public UserController(IUserApiClient userApiClient)
+        private readonly IConfiguration _configuration;
+        public UserController(IUserApiClient userApiClient, IConfiguration configuration)
         {
             _userApiClient = userApiClient;
+            _configuration = configuration;
         }
         public IActionResult Index()
         {
@@ -21,9 +31,17 @@ namespace Ielts_Admin.Controllers
         }
 
         [HttpGet]
-        public IActionResult Login()
+        public async Task<IActionResult> Login()
         {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return View();
+        }
+
+
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login");
         }
 
         public async Task<IActionResult> Login(LoginRequest request)
@@ -31,7 +49,39 @@ namespace Ielts_Admin.Controllers
             if (!ModelState.IsValid)
                 return View(ModelState);
             var token = await _userApiClient.Authenticate(request);
-            return View(token);
+            var userPrincipal = this.ValidateToken(token);
+            var authProperties = new AuthenticationProperties
+            {
+                ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10),
+                IsPersistent = true
+            };
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
+                userPrincipal, authProperties);
+            return RedirectToAction("Index", "Home");
+        }
+
+        private ClaimsPrincipal ValidateToken(string jwtToken)
+        {
+            try
+            {
+                IdentityModelEventSource.ShowPII = true;
+
+                SecurityToken validatedToken;
+                TokenValidationParameters validationParameters = new TokenValidationParameters();
+                validationParameters.ValidateLifetime = true;
+                validationParameters.ValidAudience = _configuration["Token:Issuer"];
+                validationParameters.ValidIssuer = _configuration["Token:Issuer"];
+                validationParameters.IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Token:Key"]));
+
+                ClaimsPrincipal principal = new JwtSecurityTokenHandler().ValidateToken(jwtToken, validationParameters, out validatedToken);
+
+                return principal;
+            }
+            catch(Exception ex)
+            {
+                ex.ToString();
+                return new ClaimsPrincipal();
+            }
         }
     }
 }
