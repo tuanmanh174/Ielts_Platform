@@ -100,7 +100,7 @@ namespace DataAccess.Migrations
                         new
                         {
                             Id = new Guid("e97e62f2-e790-46a0-b0f4-b070052544f7"),
-                            ConcurrencyStamp = "cb5e8175-8c02-47a7-8867-a8518fb8cf0e",
+                            ConcurrencyStamp = "453ffcd0-455c-4cdc-a879-bf2ac8ba1ab9",
                             Description = "Administrator Role",
                             Name = "admin",
                             NormalizedName = "admin"
@@ -180,7 +180,7 @@ namespace DataAccess.Migrations
                         {
                             Id = new Guid("d519fa35-0c44-49cc-b9a7-17b9a2364e8e"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6d1c0f3b-53ba-4ca7-8390-1bce17ce5490",
+                            ConcurrencyStamp = "6c56b205-4bb0-4972-8841-0ab4aac3003d",
                             Dob = new DateTime(1990, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "admin.ielts@gmail.com",
                             EmailConfirmed = true,
@@ -189,7 +189,7 @@ namespace DataAccess.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "admin.ielts@gmail.com",
                             NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAECNUl0FTrJ8ljsXJHkdLrAWfF0yQl+ZIPmGfVar/adZXG9OWHHSjAKWpZhaWfdlSZA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEL9NfrQmZdrh0hFQGUWhNEQUwwb84iYVglsfI7Laj2xCoNSoSPAmROsZes8sUlu5yg==",
                             PhoneNumberConfirmed = false,
                             SchoolId = 0,
                             SecurityStamp = "",
@@ -365,10 +365,6 @@ namespace DataAccess.Migrations
                     b.Property<int>("LELVEL")
                         .HasColumnType("int");
 
-                    b.Property<int?>("PART_ID")
-                        .IsRequired()
-                        .HasColumnType("int");
-
                     b.Property<string>("QUESTION_CONTENT")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -386,6 +382,17 @@ namespace DataAccess.Migrations
                     b.HasKey("QUESTION_ID");
 
                     b.ToTable("Questions");
+                });
+
+            modelBuilder.Entity("DataAccess.Entities.QuestionPart", b =>
+                {
+                    b.Property<int>("PART_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("QUESTION_ID")
+                        .HasColumnType("int");
+
+                    b.ToTable("QuestionParts");
                 });
 
             modelBuilder.Entity("DataAccess.Entities.QuestionTest", b =>

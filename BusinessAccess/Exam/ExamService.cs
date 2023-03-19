@@ -96,12 +96,12 @@ namespace BusinessAccess.Exam
 
         }
 
-        public async Task<List<ExamListDTO>> GetListExam(string keyWord, string fromDate, string toDate, bool status, string examCode)
+        public async Task<List<ExamListDTO>> GetListExam(string keyWord, string fromDate, string toDate, bool status, string examCode, int schoolId)
         {
             var lstExamDTO = new List<ExamListDTO>();
             try
             {
-                var lstExam = _dbContext.Exams.Where(x => x.SCHOOL_ID == 1 && x.STATUS == status).ToList();
+                var lstExam = _dbContext.Exams.Where(x => x.SCHOOL_ID == schoolId && x.STATUS == status).ToList();
                 if (keyWord != null || keyWord != "")
                 {
                     lstExam = lstExam.Where(x => keyWord.ToLower().Contains(x.EXAM_CODE.ToLower()) || keyWord.ToLower().Contains(x.EXAM_NAME.ToLower())).ToList();

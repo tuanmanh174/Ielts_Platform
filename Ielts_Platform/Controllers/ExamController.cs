@@ -27,9 +27,9 @@ namespace Ielts_Platform.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get(string keyWord, string fromDate, string toDate, bool status, string examCode)
+        public async Task<IActionResult> Get(string keyWord, string fromDate, string toDate, bool status, string examCode, int schoolId)
         {
-            var res = await _examService.GetListExam(keyWord, fromDate, toDate, status, examCode);
+            var res = await _examService.GetListExam(keyWord, fromDate, toDate, status, examCode, schoolId);
             return Ok(res);
         }
 

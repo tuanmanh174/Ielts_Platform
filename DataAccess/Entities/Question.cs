@@ -9,7 +9,6 @@ namespace DataAccess.Entities
         public int QUESTION_ID { get; set; }
         public int? QUESTION_TYPE { get; set; }
         public string QUESTION_CONTENT { get; set; }
-        public int? PART_ID { get; set; }
         public int LELVEL { get; set; }
     }
 }

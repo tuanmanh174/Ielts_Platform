@@ -16,7 +16,6 @@ namespace DataAccess.Configuration
             builder.Property(x => x.QUESTION_ID).UseIdentityColumn();
             builder.Property(x => x.QUESTION_TYPE).IsRequired();
             builder.Property(x => x.QUESTION_CONTENT).IsRequired();
-            builder.Property(x => x.PART_ID).IsRequired();
         }
     }
 }

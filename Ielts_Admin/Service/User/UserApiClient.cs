@@ -20,14 +20,12 @@ namespace Ielts_Admin.Service
         public async Task<string> Authenticate(LoginRequest request)
         {
             var json = JsonConvert.SerializeObject(request);
-            var httpContent = new StringContent(json, Encoding.UTF8,"application/json");
+            var httpContent = new StringContent(json, Encoding.UTF8, "application/json");
             var client = _httpClientFactory.CreateClient();
             client.BaseAddress = new Uri("https://localhost:44332");
             var response = await client.PostAsync("/api/user/authenticate", httpContent);
             var token = await response.Content.ReadAsStringAsync();
-            var data = (JObject)JsonConvert.DeserializeObject(token);
-            string __token = data["token"].Value<string>();
-            return __token;
+            return token;
         }
     }
 }

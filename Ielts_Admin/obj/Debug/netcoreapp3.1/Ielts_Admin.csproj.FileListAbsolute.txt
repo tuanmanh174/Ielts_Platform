@@ -116,7 +116,6 @@ D:\Ielts\Ielts_Platform\Ielts_Admin\bin\Debug\netcoreapp3.1\DataModel.runtimecon
 D:\Ielts\Ielts_Platform\Ielts_Admin\bin\Debug\netcoreapp3.1\DataModel.exe
 D:\Ielts\Ielts_Platform\Ielts_Admin\bin\Debug\netcoreapp3.1\DataModel.dll
 D:\Ielts\Ielts_Platform\Ielts_Admin\bin\Debug\netcoreapp3.1\DataModel.pdb
-D:\Ielts\Ielts_Platform\Ielts_Admin\obj\Debug\netcoreapp3.1\Razor\Views\User\Login.cshtml.g.cs
 D:\Ielts\Ielts_Platform\Ielts_Admin\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Abstractions.dll
 D:\Ielts\Ielts_Platform\Ielts_Admin\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
 D:\Ielts\Ielts_Platform\Ielts_Admin\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
@@ -124,3 +123,6 @@ D:\Ielts\Ielts_Platform\Ielts_Admin\bin\Debug\netcoreapp3.1\Microsoft.IdentityMo
 D:\Ielts\Ielts_Platform\Ielts_Admin\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
 D:\Ielts\Ielts_Platform\Ielts_Admin\bin\Debug\netcoreapp3.1\System.Text.Encodings.Web.dll
 D:\Ielts\Ielts_Platform\Ielts_Admin\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+D:\Ielts\Ielts_Platform\Ielts_Admin\obj\Debug\netcoreapp3.1\Razor\Views\Exam\Create.cshtml.g.cs
+D:\Ielts\Ielts_Platform\Ielts_Admin\obj\Debug\netcoreapp3.1\Razor\Views\User\Login.cshtml.g.cs
+D:\Ielts\Ielts_Platform\Ielts_Admin\bin\Debug\netcoreapp3.1\Microsoft.AspNet.Identity.Core.dll

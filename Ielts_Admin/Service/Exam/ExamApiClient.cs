@@ -24,24 +24,21 @@ namespace Ielts_Admin.Service.Exam
             var httpContent = new StringContent(json, Encoding.UTF8, "application/json");
             var client = _httpClientFactory.CreateClient();
             client.BaseAddress = new Uri("https://localhost:44332");
-            var response = await client.PatchAsync("/api/exam/post", httpContent);
-            var token = await response.Content.ReadAsStringAsync();
-            var data = (JObject)JsonConvert.DeserializeObject(token);
-            string __token = data["token"].Value<string>();
-            return new Response();
+            var response = await client.PostAsync("/api/exam/", httpContent);
+            var body = await response.Content.ReadAsStringAsync();
+            var exam = JsonConvert.DeserializeObject<Response>(body);
+            return exam;
         }
 
-        //public async Task<ExamListDTO> Get(string keyWord, string fromDate, string toDate, bool status, string examCode)
-        //{
-        //    var json = JsonConvert.SerializeObject(request);
-        //    var httpContent = new StringContent(json, Encoding.UTF8, "application/json");
-        //    var client = _httpClientFactory.CreateClient();
-        //    client.BaseAddress = new Uri("https://localhost:44332");
-        //    var response = await client.PatchAsync("/api/exam/get", httpContent);
-        //    var token = await response.Content.ReadAsStringAsync();
-        //    var data = (JObject)JsonConvert.DeserializeObject(token);
-        //    string __token = data["token"].Value<string>();
-        //    return new Response();
-        //}
+        public async Task<List<ExamListDTO>> Get(string keyWord, string fromDate, string toDate, bool status, string examCode, int schoolId)
+        {
+            var client = _httpClientFactory.CreateClient();
+            client.BaseAddress = new Uri("https://localhost:44332");
+            var response = await client.GetAsync("/api/exam/" + "keyWord=" + keyWord + "?" +
+                "fromDate=" + fromDate + "?" + "toDate=" + toDate + "?" + "status=" + status + "?" + "examCode=" + examCode + "?" + "schoolId" + schoolId);
+            var result = await response.Content.ReadAsStringAsync();
+            List<ExamListDTO> data = JsonConvert.DeserializeObject<List<ExamListDTO>>(result);
+            return data;
+        }
     }
 }

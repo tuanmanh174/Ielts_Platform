@@ -10,6 +10,6 @@ namespace Ielts_Admin.Service.Exam
     public interface IExamApiClient
     {
         Task<Response> Create(ExamCreateDTO exam);
-        //Task<ExamListDTO> Get(string keyWord, string fromDate, string toDate, bool status, string examCode);
+        Task<List<ExamListDTO>> Get(string keyWord, string fromDate, string toDate, bool status, string examCode, int schoolId);
     }
 }

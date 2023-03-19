@@ -12,7 +12,7 @@ namespace BusinessAccess.Exam
         Task<Response> Create(ExamCreateDTO exam);
         Task<Response> Update(ExamEditDTO exam);
         Task<Response> Delete(int examId);
-        Task<List<ExamListDTO>> GetListExam(string keyWord, string fromDate, string toDate, bool status, string examCode);
+        Task<List<ExamListDTO>> GetListExam(string keyWord, string fromDate, string toDate, bool status, string examCode, int schoolId);
         Task<ExamDTO> GetExamByID(int examId);
     }
 }
