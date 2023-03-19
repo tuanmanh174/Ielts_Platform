@@ -13,5 +13,7 @@ namespace DataModel.Exam
         public DateTime START_DATE { get; set; }
         public string DESCRIPTION { get; set; }
         public bool STATUS { get; set; }
+        public DateTime CREATED_DATE { get; set; }
+        public string CREATED_BY { get; set; }
     }
 }

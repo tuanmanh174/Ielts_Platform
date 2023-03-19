@@ -1,5 +1,6 @@
 using Ielts_Admin.Service;
 using Ielts_Admin.Service.Exam;
+using Ielts_Admin.Service.School;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -35,6 +36,7 @@ namespace Ielts_Admin
             services.AddControllersWithViews();
             services.AddTransient<IUserApiClient, UserApiClient>();
             services.AddTransient<IExamApiClient, ExamApiClient>();
+            services.AddTransient<ISchoolApiClient, SchoolApiClient>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,7 +58,7 @@ namespace Ielts_Admin
             app.UseRouting();
 
             app.UseAuthorization();
-            
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

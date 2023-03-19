@@ -34,8 +34,8 @@ namespace Ielts_Admin.Service.Exam
         {
             var client = _httpClientFactory.CreateClient();
             client.BaseAddress = new Uri("https://localhost:44332");
-            var response = await client.GetAsync("/api/exam/" + "keyWord=" + keyWord + "?" +
-                "fromDate=" + fromDate + "?" + "toDate=" + toDate + "?" + "status=" + status + "?" + "examCode=" + examCode + "?" + "schoolId" + schoolId);
+            var response = await client.GetAsync("/api/exam?" + "keyWord=" + keyWord + 
+                "&fromDate=" + fromDate + "&toDate=" + toDate + "&status=" + status + "&examCode=" + examCode + "&schoolId" + schoolId);
             var result = await response.Content.ReadAsStringAsync();
             List<ExamListDTO> data = JsonConvert.DeserializeObject<List<ExamListDTO>>(result);
             return data;

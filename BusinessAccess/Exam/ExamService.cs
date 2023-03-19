@@ -35,6 +35,8 @@ namespace BusinessAccess.Exam
                 _exam.START_DATE = exam.START_DATE;
                 _exam.STATUS = exam.STATUS;
                 _exam.DESCRIPTION = exam.DESCRIPTION;
+                _exam.CREATED_DATE = DateTime.Now;
+                _exam.CREATED_BY = exam.CREATED_BY;
                 _dbContext.Exams.Add(_exam);
                 await _dbContext.SaveChangesAsync();
                 responseStatus.Message = "Thêm mới thành công";
@@ -101,8 +103,8 @@ namespace BusinessAccess.Exam
             var lstExamDTO = new List<ExamListDTO>();
             try
             {
-                var lstExam = _dbContext.Exams.Where(x => x.SCHOOL_ID == schoolId && x.STATUS == status).ToList();
-                if (keyWord != null || keyWord != "")
+                var lstExam = _dbContext.Exams.Where(x => x.SCHOOL_ID == schoolId && x.STATUS == true).ToList();
+                if (keyWord != null)
                 {
                     lstExam = lstExam.Where(x => keyWord.ToLower().Contains(x.EXAM_CODE.ToLower()) || keyWord.ToLower().Contains(x.EXAM_NAME.ToLower())).ToList();
                 }
@@ -114,6 +116,10 @@ namespace BusinessAccess.Exam
                 {
                     lstExam = lstExam.Where(x => x.EXAM_CODE == examCode).ToList();
                 }
+                else if (status != true)
+                {
+                    lstExam = lstExam.Where(x => x.STATUS == status).ToList();
+                }
                 foreach (var item in lstExam)
                 {
                     var examDTO = new ExamListDTO();
@@ -123,6 +129,9 @@ namespace BusinessAccess.Exam
                     examDTO.EXAM_NAME = item.EXAM_NAME;
                     examDTO.START_DATE = item.START_DATE;
                     examDTO.STATUS = item.STATUS;
+                    examDTO.SCHOOL_ID = schoolId;
+                    examDTO.CREATED_BY = item.CREATED_BY;
+                    examDTO.CREATED_DATE = Convert.ToDateTime(item.CREATED_DATE);
                     lstExamDTO.Add(examDTO);
                 }
                 return lstExamDTO;

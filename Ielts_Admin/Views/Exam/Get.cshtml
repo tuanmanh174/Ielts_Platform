@@ -1,0 +1,53 @@
+﻿@model List<DataModel.Exam.ExamListDTO>
+@{
+    ViewData["Title"] = "Get";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-12">
+            <div class="bg-secondary rounded h-100 p-4">
+                <h6 class="mb-4">Danh sách kỳ thi</h6>
+                
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">STT</th>
+                                <th scope="col">Mã Kỳ Thi</th>
+                                <th scope="col">Tên Kỳ Thi</th>
+                                <th scope="col">Ngày Bắt Đầu</th>
+                                <th scope="col">Giờ Bắt Đầu</th>
+                                <th scope="col">Trạng Thái</th>
+                                <th scope="col">Người Tạo</th>
+                                <th scope="col">Ngày Tạo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (int i = 0; i < Model.Count; i++)
+                            {
+                                var item = Model[i];
+                                var status = item.STATUS == true ? "Đang hoạt động" : "Vô hiệu hóa";
+                                int stt = i + 1;
+                                <tr>
+                                    <td>@stt</td>
+                                    <td>@item.EXAM_CODE</td>
+                                    <td>@item.EXAM_NAME</td>
+                                    <td>@item.START_DATE.ToString("dd/MM/yyyy")</td>
+                                    <td>@item.START_DATE.ToString("hh:mm tt")</td>
+                                    <td>@status</td>
+                                    <td>@item.CREATED_BY</td>
+                                    <td>@item.CREATED_DATE.ToString("dd/MM/yyyy")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
