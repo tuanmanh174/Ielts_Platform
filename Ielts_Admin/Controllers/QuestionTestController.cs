@@ -46,5 +46,25 @@ namespace Ielts_Admin.Controllers
             var result = await _questionTestApiClien.Create(request);
             return RedirectToAction("Get");
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            var userName = User.Identity.GetName();
+            var schoolId = User.Identity.SchoolId();
+            if (!ModelState.IsValid)
+                return View(ModelState);
+            var data = await _questionTestApiClien.GetList("", "", "", "", Convert.ToInt32(schoolId));
+            return View(data);
+        }
+        [HttpGet]
+        public JsonResult GetList(string keyWord, string fromDate, string toDate, string testCode)
+        {
+            var schoolId = User.Identity.SchoolId();
+            var _schooId = Convert.ToInt32(schoolId); 
+            var data = _questionTestApiClien.GetList(keyWord, fromDate, toDate, testCode, _schooId);
+            return Json(data);
+        }
+
     }
 }

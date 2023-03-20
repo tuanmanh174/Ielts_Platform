@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using DataAccess.Entities;
+using System.Linq;
+
 namespace BusinessAccess.QuestionTest
 {
     public class QuestionTestService : IQuestionTestService
@@ -34,14 +36,47 @@ namespace BusinessAccess.QuestionTest
                 responseStatus.ResponseStatus = 100;
                 return responseStatus;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ex.ToString();
                 responseStatus.Message = "Thêm mới không thành công, vui lòng liên hệ lại với admin quản trị hệ thống";
                 responseStatus.ResponseStatus = -99;
                 return responseStatus;
             }
-            
+
+        }
+
+        public async Task<List<QuestionTestListDTO>> GetList(string keyWord = "", string fromDate = "", string toDate = "", string testCode = "", int schoolId = 0)
+        
+        {
+            var lstQuestionTest = _dbContext.QuestionTests.Where(x => x.SCHOOL_ID == schoolId).ToList();
+            List<QuestionTestListDTO> lstQuestionTestDTO = new List<QuestionTestListDTO>();
+            foreach (var item in lstQuestionTest)
+            {
+                var ab = new QuestionTestListDTO();
+                ab.SCHOOL_ID = item.SCHOOL_ID;
+                ab.TEST_CODE = item.TEST_CODE;
+                ab.TEST_ID = item.TEST_ID;
+                ab.TEST_NAME = item.TEST_NAME;
+                ab.TEST_TYPE = item.TEST_TYPE;
+                ab.NUMBER_PART = item.NUMBER_PART;
+                ab.CREATED_BY = item.CREATED_BY;
+                ab.CREATED_DATE = Convert.ToDateTime(item.CREATED_DATE);
+                lstQuestionTestDTO.Add(ab);
+            }
+            if (keyWord != null)
+            {
+                lstQuestionTest = lstQuestionTest.Where(x => keyWord.ToLower().Trim().Contains(x.TEST_NAME.ToLower().Trim())).ToList();
+            }
+            else if (fromDate != null && toDate != null)
+            {
+
+            }
+            else if (testCode != null)
+            {
+                lstQuestionTest = lstQuestionTest.Where(x => testCode.ToLower().Trim().Contains(x.TEST_CODE.Trim().ToLower())).ToList();
+            }
+            return lstQuestionTestDTO;
         }
     }
 }

@@ -10,5 +10,7 @@ namespace Ielts_Admin.Service.QuestionTest
     public interface IQuestionTestApiClient
     {
         Task<Response> Create(QuestionTestCreateDTO request);
+        Task<List<QuestionTestListDTO>> GetList(string keyWord, string fromDate, string toDate, string testCode, int schoolId);
+
     }
 }

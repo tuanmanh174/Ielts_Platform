@@ -10,5 +10,6 @@ namespace BusinessAccess.QuestionTest
     public interface IQuestionTestService
     {
         Task<Response> Create(QuestionTestCreateDTO questionTest);
+        Task<List<QuestionTestListDTO>> GetList(string keyWord, string fromDate, string toDate, string testCode, int schoolId);
     }
 }

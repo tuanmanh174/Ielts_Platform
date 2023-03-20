@@ -1,0 +1,52 @@
+﻿@model List<DataModel.QuestionTest.QuestionTestListDTO>
+
+@{
+    ViewData["Title"] = "Get";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-12">
+            <div class="bg-secondary rounded h-100 p-4">
+                <h6 class="mb-4">Danh sách đề thi</h6>
+
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">STT</th>
+                                <th scope="col">Tên Đề Thi</th>
+                                <th scope="col">Mã Đề Thi</th>
+                                <th scope="col">Số Part Trong Đề</th>
+                                <th scope="col">Kiểu Đề</th>
+                                <th scope="col">Người Tạo</th>
+                                <th scope="col">Ngày Tạo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (int i = 0; i < Model.Count; i++)
+                            {
+                                var item = Model[i];
+                                int stt = i + 1;
+                                <tr>
+                                    <td>@stt</td>
+                                    <td>@item.TEST_NAME</td>
+                                    <td>@item.TEST_CODE</td>
+                                    <td>@item.NUMBER_PART</td>
+                                    <td>@item.TEST_TYPE</td>
+                                    <td>@item.CREATED_BY</td>
+                                    <td>@item.CREATED_DATE.ToString("dd/MM/yyyy")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
