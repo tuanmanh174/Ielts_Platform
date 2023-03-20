@@ -40,7 +40,6 @@ namespace BusinessAccess.Question
                 responseStatus.ResponseStatus = -99;
                 return responseStatus;
             }
-
         }
     }
 }
