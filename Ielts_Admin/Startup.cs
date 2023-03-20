@@ -1,5 +1,6 @@
 using Ielts_Admin.Service;
 using Ielts_Admin.Service.Exam;
+using Ielts_Admin.Service.QuestionTest;
 using Ielts_Admin.Service.School;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
@@ -37,6 +38,7 @@ namespace Ielts_Admin
             services.AddTransient<IUserApiClient, UserApiClient>();
             services.AddTransient<IExamApiClient, ExamApiClient>();
             services.AddTransient<ISchoolApiClient, SchoolApiClient>();
+            services.AddTransient<IQuestionTestApiClient, QuestionTestApiClient>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

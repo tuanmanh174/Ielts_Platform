@@ -23,5 +23,13 @@ namespace Ielts_Platform.Controllers
             var res = await _schoolService.Create(request);
             return Ok(res);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Get(string keyWord, string schoolName, string schoolCode, int cityId)
+        {
+            var res = await _schoolService.GetList(keyWord, schoolName, schoolCode, cityId);
+            return Ok(res);
+        }
+
     }
 }

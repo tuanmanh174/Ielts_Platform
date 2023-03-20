@@ -1,4 +1,6 @@
 using BusinessAccess.Exam;
+using BusinessAccess.ExamTest;
+using BusinessAccess.QuestionTest;
 using BusinessAccess.School;
 using BusinessAccess.System.User;
 using DataAccess;
@@ -37,6 +39,8 @@ namespace Ielts_Platform
             services.AddTransient<IExamService, ExamService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<ISchoolService, SchoolService>();
+            services.AddTransient<IQuestionTestService, QuestionTestService>();
+            //services.AddTransient<IExamTestService, ExamTestService>();
             services.AddTransient<UserManager<AppUser>, UserManager<AppUser>>();
             services.AddTransient<SignInManager<AppUser>, SignInManager<AppUser>>();
             services.AddTransient<RoleManager<AppRole>, RoleManager<AppRole>>();

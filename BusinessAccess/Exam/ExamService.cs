@@ -21,7 +21,7 @@ namespace BusinessAccess.Exam
         {
             try
             {
-                var checkExamCode = _dbContext.Exams.Where(x => x.EXAM_CODE == exam.EXAM_CODE).FirstOrDefault();
+                var checkExamCode = _dbContext.Exams.Where(x => x.EXAM_CODE == exam.EXAM_CODE && x.SCHOOL_ID == exam.SCHOOL_ID).FirstOrDefault();
                 if (checkExamCode != null)
                 {
                     responseStatus.Message = "Mã Code đã tồn tại";

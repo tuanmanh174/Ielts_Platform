@@ -54,5 +54,24 @@ namespace BusinessAccess.School
                 return new Response();
             }
         }
+        public async Task<List<SchoolGetListDTO>> GetList(string keyWord, string schoolName, string schoolCode, int cityId)
+        {
+            var lstSchool = _dbContext.Schools.ToList();
+            var lstSchoolDTO = new List<SchoolGetListDTO>();
+            foreach (var item in lstSchool)
+            {
+                var ab = new SchoolGetListDTO();
+                ab.PHONE = Convert.ToInt32(item.PHONE);
+                ab.SCHOOL_CODE = item.SCHOOL_CODE;
+                ab.SCHOOL_ID = item.SCHOOL_ID;
+                ab.SCHOOL_NAME = item.SCHOOL_NAME;
+                ab.ADDRESS = item.ADDRESS;
+                ab.TEL = item.TEL;
+                ab.CREATED_BY = item.CREATED_BY;
+                ab.CREATED_DATE = Convert.ToDateTime(item.CREATED_DATE);
+                lstSchoolDTO.Add(ab);
+            }
+            return lstSchoolDTO;
+        }
     }
 }

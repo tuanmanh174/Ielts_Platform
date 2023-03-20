@@ -10,5 +10,6 @@ namespace BusinessAccess.School
     public interface ISchoolService
     {
         Task<Response> Create(SchoolCreateDTO request);
+        Task<List<SchoolGetListDTO>> GetList(string keyWord, string schoolName, string schoolCode, int cityId);
     }
 }

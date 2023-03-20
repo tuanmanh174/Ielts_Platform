@@ -28,5 +28,16 @@ namespace Ielts_Admin.Service.School
             var res = JsonConvert.DeserializeObject<Response>(body);
             return res;
         }
+
+        public async Task<List<SchoolGetListDTO>> Get(string keyWord, string schoolName, string schoolCode, int cityId)
+        {
+            var client = _httpClientFactory.CreateClient();
+            client.BaseAddress = new Uri("https://localhost:44332");
+            var response = await client.GetAsync("/api/school?" + "keyWord=" + keyWord +
+                "&schoolName=" + schoolName + "&schoolCode=" + schoolCode + "&cityId=" + cityId);
+            var result = await response.Content.ReadAsStringAsync();
+            List<SchoolGetListDTO> data = JsonConvert.DeserializeObject<List<SchoolGetListDTO>>(result);
+            return data;
+        }
     }
 }

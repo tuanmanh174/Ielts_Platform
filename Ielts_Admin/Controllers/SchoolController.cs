@@ -46,5 +46,14 @@ namespace Ielts_Admin.Controllers
             var result = await _schoolApiClient.Create(request);
             return RedirectToAction("Get");
         }
+
+        public IActionResult Get()
+        {
+            var _schoolId = User.Identity.SchoolId();
+            var schoolId = Convert.ToInt32(_schoolId);
+            var result = _schoolApiClient.Get("", "", "", 0);
+            List<SchoolGetListDTO> list = Task.Run(() => result).Result;
+            return View(list);
+        }
     }
 }

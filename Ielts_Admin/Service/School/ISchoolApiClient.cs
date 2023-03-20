@@ -10,5 +10,6 @@ namespace Ielts_Admin.Service.School
     public interface ISchoolApiClient
     {
         Task<Response> Create(SchoolCreateDTO request);
+        Task<List<SchoolGetListDTO>> Get(string keyWord, string schoolName, string schoolCode, int cityId);
     }
 }

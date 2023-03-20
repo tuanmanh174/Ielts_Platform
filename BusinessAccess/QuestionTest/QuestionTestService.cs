@@ -25,8 +25,9 @@ namespace BusinessAccess.QuestionTest
                 questionTest.TEST_NAME = questionTestDTO.TEST_NAME;
                 questionTest.NUMBER_PART = questionTestDTO.NUMBER_PART;
                 questionTest.CREATED_DATE = DateTime.Now;
-                questionTest.CREATED_BY = "manhdt";
-                questionTest.SCHOOL_ID = 1;
+                questionTest.CREATED_BY = questionTestDTO.CREATED_BY;
+                questionTest.SCHOOL_ID = questionTestDTO.SCHOOL_ID;
+                questionTest.TEST_CODE = questionTestDTO.TEST_CODE;
                 _dbContext.Add(questionTest);
                 await _dbContext.SaveChangesAsync();
                 responseStatus.Message = "Thêm mới thành công";

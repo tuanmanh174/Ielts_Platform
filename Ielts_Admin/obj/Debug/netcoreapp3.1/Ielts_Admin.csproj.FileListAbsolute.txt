@@ -128,3 +128,5 @@ D:\Ielts\Ielts_Platform\Ielts_Admin\obj\Debug\netcoreapp3.1\Razor\Views\User\Log
 D:\Ielts\Ielts_Platform\Ielts_Admin\bin\Debug\netcoreapp3.1\Microsoft.AspNet.Identity.Core.dll
 D:\Ielts\Ielts_Platform\Ielts_Admin\obj\Debug\netcoreapp3.1\Razor\Views\Exam\Get.cshtml.g.cs
 D:\Ielts\Ielts_Platform\Ielts_Admin\obj\Debug\netcoreapp3.1\Razor\Views\School\Create.cshtml.g.cs
+D:\Ielts\Ielts_Platform\Ielts_Admin\obj\Debug\netcoreapp3.1\Razor\Views\School\Get.cshtml.g.cs
+D:\Ielts\Ielts_Platform\Ielts_Admin\obj\Debug\netcoreapp3.1\Razor\Views\QuestionTest\Create.cshtml.g.cs

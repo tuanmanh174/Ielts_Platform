@@ -100,7 +100,7 @@ namespace DataAccess.Migrations
                         new
                         {
                             Id = new Guid("e97e62f2-e790-46a0-b0f4-b070052544f7"),
-                            ConcurrencyStamp = "453ffcd0-455c-4cdc-a879-bf2ac8ba1ab9",
+                            ConcurrencyStamp = "5c7c8770-ae32-4765-8e19-8c07bfa44aad",
                             Description = "Administrator Role",
                             Name = "admin",
                             NormalizedName = "admin"
@@ -180,7 +180,7 @@ namespace DataAccess.Migrations
                         {
                             Id = new Guid("d519fa35-0c44-49cc-b9a7-17b9a2364e8e"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6c56b205-4bb0-4972-8841-0ab4aac3003d",
+                            ConcurrencyStamp = "5fe46469-0eb6-4a04-a67c-5d641c970380",
                             Dob = new DateTime(1990, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "admin.ielts@gmail.com",
                             EmailConfirmed = true,
@@ -189,7 +189,7 @@ namespace DataAccess.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "admin.ielts@gmail.com",
                             NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAEL9NfrQmZdrh0hFQGUWhNEQUwwb84iYVglsfI7Laj2xCoNSoSPAmROsZes8sUlu5yg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEISKXEfP4JRAkGWtTNeE7t50sDnGx9EfjMN0OvM9zentn43kmiic2YEuBX88UI2Xvw==",
                             PhoneNumberConfirmed = false,
                             SchoolId = 0,
                             SecurityStamp = "",
@@ -415,6 +415,9 @@ namespace DataAccess.Migrations
 
                     b.Property<int>("SCHOOL_ID")
                         .HasColumnType("int");
+
+                    b.Property<string>("TEST_CODE")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TEST_NAME")
                         .IsRequired()
