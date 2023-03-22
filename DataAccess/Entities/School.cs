@@ -13,6 +13,7 @@ namespace DataAccess.Entities
         public int? PHONE { get; set; }
         public int? TEL { get; set; }
         public int? CITY_ID { get; set; }
+        public bool STATUS { get; set; }
 
     }
 }

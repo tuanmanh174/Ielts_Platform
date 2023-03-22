@@ -54,9 +54,56 @@ namespace BusinessAccess.School
                 return new Response();
             }
         }
-        public async Task<List<SchoolGetListDTO>> GetList(string keyWord, string schoolName, string schoolCode, int cityId)
+
+
+        public async Task<Response> Update(SchoolEditDTO request)
         {
-            var lstSchool = _dbContext.Schools.ToList();
+            Response res = new Response();
+            try
+            {
+                var schooObj = _dbContext.Schools.Where(x => x.SCHOOL_CODE == request.SCHOOL_CODE).FirstOrDefault();
+                if (schooObj != null)
+                {
+                    res.Message = "Mã Code đã tồn tại";
+                    res.ResponseStatus = -98;
+                    return res;
+                }
+                var school = _dbContext.Schools.Find(request.SCHOOL_ID);
+                school.PHONE = request.PHONE;
+                school.SCHOOL_NAME = request.SCHOOL_NAME;
+                school.SCHOOL_CODE = request.SCHOOL_CODE;
+                school.ADDRESS = request.ADDRESS;
+                school.TEL = request.TEL;
+                school.CITY_ID = request.CITY_ID;
+                school.UPDATED_DATE = DateTime.Now;
+                school.UPDATED_BY = request.UPDATED_BY;
+                await _dbContext.AddAsync(school);
+                await _dbContext.SaveChangesAsync();
+                res.Message = "Cập nhật thành công";
+                res.ResponseStatus = 100;
+                return res;
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+                return new Response();
+            }
+        }
+        public async Task<List<SchoolGetListDTO>> GetList(string keyWord, string schoolCode, int cityId)
+        {
+            var lstSchool = _dbContext.Schools.Where(x => x.STATUS == true).ToList();
+            if (keyWord != null)
+            {
+                lstSchool = lstSchool.Where(x => keyWord.Trim().ToLower().Contains(x.SCHOOL_NAME.Trim().ToLower())).ToList();
+            }
+            else if (schoolCode != null)
+            {
+                lstSchool = lstSchool.Where(x => schoolCode.Trim().ToLower().Contains(x.SCHOOL_CODE.Trim().ToLower())).ToList();
+            }
+            else if (cityId != 0)
+            {
+                lstSchool = lstSchool.Where(x => x.CITY_ID == cityId).ToList();
+            }
             var lstSchoolDTO = new List<SchoolGetListDTO>();
             foreach (var item in lstSchool)
             {
@@ -72,6 +119,25 @@ namespace BusinessAccess.School
                 lstSchoolDTO.Add(ab);
             }
             return lstSchoolDTO;
+        }
+
+        public async Task<SchoolGetListDTO> GetData(int schoolId)
+        {
+            var school = _dbContext.Schools.Find(schoolId);
+            if (school != null)
+            {
+                SchoolGetListDTO ab = new SchoolGetListDTO();
+                ab.CITY_ID = Convert.ToInt32(school.CITY_ID);
+                ab.ADDRESS = school.ADDRESS;
+                ab.PHONE = school.PHONE != null ? Convert.ToInt32(school.PHONE) : 0;
+                ab.SCHOOL_NAME = school.SCHOOL_NAME;
+                ab.TEL = school.TEL;
+                return ab;
+            }
+            else
+            {
+                return new SchoolGetListDTO();
+            }
         }
     }
 }

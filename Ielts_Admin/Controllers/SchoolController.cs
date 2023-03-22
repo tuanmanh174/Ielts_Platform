@@ -47,13 +47,33 @@ namespace Ielts_Admin.Controllers
             return RedirectToAction("Get");
         }
 
+
+        [HttpPut]
+        public async Task<IActionResult> Put(SchoolEditDTO request)
+        {
+            var userName = User.Identity.GetName();
+            request.UPDATED_BY = userName;
+            if (!ModelState.IsValid)
+                return View(ModelState);
+            var result = await _schoolApiClient.Put(request);
+            return RedirectToAction("Get");
+        }
+
         public IActionResult Get()
         {
             var _schoolId = User.Identity.SchoolId();
             var schoolId = Convert.ToInt32(_schoolId);
-            var result = _schoolApiClient.Get("", "", "", 0);
+            var result = _schoolApiClient.Get("", "", 0);
             List<SchoolGetListDTO> list = Task.Run(() => result).Result;
             return View(list);
+        }
+
+        //[HttpGet("{id:int}")]
+        public IActionResult GetData(int id)
+        {
+            var result = _schoolApiClient.GetData(id);
+            SchoolGetListDTO data = Task.Run(() => result).Result;
+            return View(data);
         }
     }
 }

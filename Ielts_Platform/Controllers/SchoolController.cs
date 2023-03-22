@@ -25,10 +25,24 @@ namespace Ielts_Platform.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get(string keyWord, string schoolName, string schoolCode, int cityId)
+        public async Task<IActionResult> Get(string keyWord, string schoolCode, int cityId)
         {
-            var res = await _schoolService.GetList(keyWord, schoolName, schoolCode, cityId);
+            var res = await _schoolService.GetList(keyWord, schoolCode, cityId);
             return Ok(res);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Put([FromBody] SchoolEditDTO request)
+        {
+            var res = await _schoolService.Update(request);
+            return Ok(res);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetData(int id)
+        {
+            var data = await _schoolService.GetData(id);
+            return Ok(data);
         }
 
     }

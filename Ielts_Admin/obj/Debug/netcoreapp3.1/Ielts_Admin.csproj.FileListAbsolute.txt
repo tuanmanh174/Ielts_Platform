@@ -131,3 +131,4 @@ D:\Ielts\Ielts_Platform\Ielts_Admin\obj\Debug\netcoreapp3.1\Razor\Views\School\C
 D:\Ielts\Ielts_Platform\Ielts_Admin\obj\Debug\netcoreapp3.1\Razor\Views\School\Get.cshtml.g.cs
 D:\Ielts\Ielts_Platform\Ielts_Admin\obj\Debug\netcoreapp3.1\Razor\Views\QuestionTest\Create.cshtml.g.cs
 D:\Ielts\Ielts_Platform\Ielts_Admin\obj\Debug\netcoreapp3.1\Razor\Views\QuestionTest\Get.cshtml.g.cs
+D:\Ielts\Ielts_Platform\Ielts_Admin\obj\Debug\netcoreapp3.1\Razor\Views\School\GetData.cshtml.g.cs
