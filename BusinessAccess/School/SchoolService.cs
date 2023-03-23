@@ -77,7 +77,7 @@ namespace BusinessAccess.School
                 school.CITY_ID = request.CITY_ID;
                 school.UPDATED_DATE = DateTime.Now;
                 school.UPDATED_BY = request.UPDATED_BY;
-                await _dbContext.AddAsync(school);
+                _dbContext.Update(school);
                 await _dbContext.SaveChangesAsync();
                 res.Message = "Cập nhật thành công";
                 res.ResponseStatus = 100;
@@ -131,7 +131,9 @@ namespace BusinessAccess.School
                 ab.ADDRESS = school.ADDRESS;
                 ab.PHONE = school.PHONE != null ? Convert.ToInt32(school.PHONE) : 0;
                 ab.SCHOOL_NAME = school.SCHOOL_NAME;
+                ab.SCHOOL_CODE = school.SCHOOL_CODE;
                 ab.TEL = school.TEL;
+                ab.SCHOOL_ID = schoolId;
                 return ab;
             }
             else

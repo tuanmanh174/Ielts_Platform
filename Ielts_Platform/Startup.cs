@@ -27,7 +27,7 @@ namespace Ielts_Platform
 
         public void ConfigureServices(IServiceCollection services)
         {
-            
+
             services.AddDbContext<IeltsDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("IeltsDatabase")));
             services.AddControllers();
@@ -52,7 +52,6 @@ namespace Ielts_Platform
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

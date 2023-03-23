@@ -39,6 +39,7 @@ namespace Ielts_Platform.Controllers
         }
 
         [HttpGet]
+        [Route("{id}")]
         public async Task<IActionResult> GetData(int id)
         {
             var data = await _schoolService.GetData(id);

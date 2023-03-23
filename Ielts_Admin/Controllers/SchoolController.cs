@@ -49,14 +49,12 @@ namespace Ielts_Admin.Controllers
 
 
         [HttpPut]
-        public async Task<IActionResult> Put(SchoolEditDTO request)
+        public async Task<JsonResult> Update(SchoolEditDTO request)
         {
             var userName = User.Identity.GetName();
             request.UPDATED_BY = userName;
-            if (!ModelState.IsValid)
-                return View(ModelState);
             var result = await _schoolApiClient.Put(request);
-            return RedirectToAction("Get");
+            return Json(result);
         }
 
         public IActionResult Get()
@@ -68,8 +66,8 @@ namespace Ielts_Admin.Controllers
             return View(list);
         }
 
-        //[HttpGet("{id:int}")]
-        public IActionResult GetData(int id)
+        [HttpGet]
+        public IActionResult Update(int id)
         {
             var result = _schoolApiClient.GetData(id);
             SchoolGetListDTO data = Task.Run(() => result).Result;
