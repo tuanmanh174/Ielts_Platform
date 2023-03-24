@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DataAccess.Entities;
 using System.Linq;
+using System.Globalization;
 
 namespace BusinessAccess.QuestionTest
 {
@@ -46,8 +47,35 @@ namespace BusinessAccess.QuestionTest
 
         }
 
-        public async Task<List<QuestionTestListDTO>> GetList(string keyWord = "", string fromDate = "", string toDate = "", string testCode = "", int schoolId = 0)
-        
+
+        public async Task<Response> Update(int id, QuestionTestEditDTO questionTestDTO)
+        {
+            try
+            {
+                var questionTest = _dbContext.QuestionTests.Find(id);
+                questionTest.TEST_TYPE = questionTestDTO.TEST_TYPE;
+                questionTest.TEST_NAME = questionTestDTO.TEST_NAME;
+                questionTest.NUMBER_PART = questionTestDTO.NUMBER_PART;
+                questionTest.UPDATED_DATE = DateTime.Now;
+                questionTest.UPDATED_BY = questionTestDTO.UPDATED_BY;
+                questionTest.TEST_CODE = questionTestDTO.TEST_CODE;
+                _dbContext.Update(questionTest);
+                await _dbContext.SaveChangesAsync();
+                responseStatus.Message = "Cập nhật thành công";
+                responseStatus.ResponseStatus = 100;
+                return responseStatus;
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+                responseStatus.Message = "Thêm mới không thành công, vui lòng liên hệ lại với admin quản trị hệ thống";
+                responseStatus.ResponseStatus = -99;
+                return responseStatus;
+            }
+
+        }
+
+        public async Task<List<QuestionTestListDTO>> GetListData(string keyWord = "", string fromDate = "", string toDate = "", string testCode = "", int schoolId = 0)
         {
             var lstQuestionTest = _dbContext.QuestionTests.Where(x => x.SCHOOL_ID == schoolId).ToList();
             List<QuestionTestListDTO> lstQuestionTestDTO = new List<QuestionTestListDTO>();
@@ -70,13 +98,35 @@ namespace BusinessAccess.QuestionTest
             }
             else if (fromDate != null && toDate != null)
             {
-
+                DateTime fd = DateTime.ParseExact(fromDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                DateTime td = DateTime.ParseExact(toDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                lstQuestionTest = lstQuestionTest.Where(x => x.CREATED_DATE >= fd && x.CREATED_DATE <= td).ToList();
             }
             else if (testCode != null)
             {
                 lstQuestionTest = lstQuestionTest.Where(x => testCode.ToLower().Trim().Contains(x.TEST_CODE.Trim().ToLower())).ToList();
             }
             return lstQuestionTestDTO;
+        }
+
+
+
+
+        public async Task<QuestionTestListDTO> GetData(int id)
+        {
+            var questionTest = _dbContext.QuestionTests.Find(id);
+
+            var ab = new QuestionTestListDTO();
+            ab.SCHOOL_ID = questionTest.SCHOOL_ID;
+            ab.TEST_CODE = questionTest.TEST_CODE;
+            ab.TEST_ID = questionTest.TEST_ID;
+            ab.TEST_NAME = questionTest.TEST_NAME;
+            ab.TEST_TYPE = questionTest.TEST_TYPE;
+            ab.NUMBER_PART = questionTest.NUMBER_PART;
+            ab.CREATED_BY = questionTest.CREATED_BY;
+            ab.CREATED_DATE = Convert.ToDateTime(questionTest.CREATED_DATE);
+
+            return ab;
         }
     }
 }

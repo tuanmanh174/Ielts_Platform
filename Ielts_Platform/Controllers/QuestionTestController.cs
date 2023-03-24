@@ -29,7 +29,7 @@ namespace Ielts_Platform.Controllers
         [HttpGet]
         public async Task<IActionResult> Get(string keyWord = "", string fromDate = "", string toDate = "", string testCode = "", int schoolId = 0)
         {
-            var data = await _questionTestService.GetList(keyWord, fromDate, toDate, testCode, schoolId);
+            var data = await _questionTestService.GetListData(keyWord, fromDate, toDate, testCode, schoolId);
             return Ok(data);
         }
     }

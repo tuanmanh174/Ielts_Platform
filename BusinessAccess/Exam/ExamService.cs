@@ -4,6 +4,7 @@ using DataModel;
 using DataModel.Exam;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -110,7 +111,9 @@ namespace BusinessAccess.Exam
                 }
                 else if (fromDate != "" && toDate != "")
                 {
-
+                    DateTime fd = DateTime.ParseExact(fromDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    DateTime td = DateTime.ParseExact(toDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    lstExam = lstExam.Where(x => x.START_DATE >= fd && x.START_DATE <= td).ToList();
                 }
                 else if (examCode != "")
                 {
@@ -143,9 +146,42 @@ namespace BusinessAccess.Exam
             }
         }
 
-        public Task<Response> Update(ExamEditDTO exam)
+        public async Task<Response> Update(int examId, ExamEditDTO exam)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var _exam = _dbContext.Exams.Find(examId);
+                var checkExamCode = _dbContext.Exams.Where(x => x.EXAM_CODE == exam.EXAM_CODE && x.SCHOOL_ID == exam.SCHOOL_ID
+                    && x.EXAM_CODE != _exam.EXAM_CODE).FirstOrDefault();
+                if (checkExamCode != null)
+                {
+                    responseStatus.Message = "Mã Code đã tồn tại";
+                    responseStatus.ResponseStatus = -100;
+                    return responseStatus;
+                }
+
+                _exam.EXAM_CODE = exam.EXAM_CODE;
+                _exam.EXAM_NAME = exam.EXAM_NAME;
+                _exam.START_DATE = exam.START_DATE;
+                _exam.STATUS = exam.STATUS;
+                _exam.DESCRIPTION = exam.DESCRIPTION;
+                _exam.CREATED_DATE = DateTime.Now;
+                _exam.UPDATED_BY = exam.UPDATED_BY;
+                _dbContext.Exams.Update(_exam);
+                await _dbContext.SaveChangesAsync();
+                responseStatus.Message = "Thêm mới thành công";
+                responseStatus.ResponseStatus = 100;
+                return responseStatus;
+
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+                responseStatus.Message = "Thêm mới không thành công, vui lòng liên hệ lại với admin quản trị hệ thống";
+                responseStatus.ResponseStatus = -99;
+                return responseStatus;
+            }
+
         }
     }
 }
