@@ -4,14 +4,16 @@ using DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(IeltsDbContext))]
-    partial class IeltsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230331042631_updadlkasjflldfjks23323")]
+    partial class updadlkasjflldfjks23323
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -121,7 +123,7 @@ namespace DataAccess.Migrations
                         new
                         {
                             Id = new Guid("e97e62f2-e790-46a0-b0f4-b070052544f7"),
-                            ConcurrencyStamp = "7962d847-b515-4d57-a937-1f48e3b19bfc",
+                            ConcurrencyStamp = "25d7da12-b645-487f-a89d-a8e1f7e61a63",
                             Description = "Administrator Role",
                             Name = "admin",
                             NormalizedName = "admin"
@@ -201,7 +203,7 @@ namespace DataAccess.Migrations
                         {
                             Id = new Guid("d519fa35-0c44-49cc-b9a7-17b9a2364e8e"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "01c69d67-f375-48c9-9184-b67f142deb11",
+                            ConcurrencyStamp = "23139054-6bde-4b99-bf9c-438b44bd08e2",
                             Dob = new DateTime(1990, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "admin.ielts@gmail.com",
                             EmailConfirmed = true,
@@ -210,7 +212,7 @@ namespace DataAccess.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "admin.ielts@gmail.com",
                             NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGXb5d4M1S+YYbpwLQcQ8JVaprWF7PcGHxXf1T24qp3qbjpmG1EL1UAea36naw3uIg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEO3BquC8l/WUrUKMEmkE56WuB+Kur0ZaCZthsUA0enAqMGlgdq6kQv2nEdZi/mzT/A==",
                             PhoneNumberConfirmed = false,
                             SchoolId = 0,
                             SecurityStamp = "",
@@ -616,24 +618,6 @@ namespace DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Students");
-                });
-
-            modelBuilder.Entity("DataAccess.Entities.Writing", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Title1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Writings");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>

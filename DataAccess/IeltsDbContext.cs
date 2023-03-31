@@ -61,7 +61,7 @@ namespace DataAccess
 
 
 
-        //public DbSet<Writing> Writings { get; set; }
+        public DbSet<Writing> Writings { get; set; }
         public DbSet<AnswerWriting> AnswerWritings { get; set; }
     }
 }

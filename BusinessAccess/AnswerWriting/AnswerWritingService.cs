@@ -44,7 +44,6 @@ namespace BusinessAccess.AnswerWriting
                     var obj = _dbContext.AnswerWritings.Find(id);
                     obj.Answer1 = request.Answer1;
                     obj.Answer2 = request.Answer2;
-                    obj.StudentId = new Guid(request.StudentId);
                     _dbContext.Update(obj);
                     _dbContext.SaveChanges();
                     res.Message = "Thành công";
