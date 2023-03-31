@@ -12,10 +12,10 @@ namespace DataAccess.Configuration
         public void Configure(EntityTypeBuilder<Student> builder)
         {
             builder.ToTable("Students");
-            builder.HasKey(x => x.STUDENT_ID);
-            builder.Property(x => x.STUDENT_ID).UseIdentityColumn();
-            builder.Property(x => x.STUDENT_NAME).IsRequired();
-            builder.Property(x => x.STUDENT_CODE).IsRequired();
+            builder.HasKey(x => x.Id);
+            builder.Property(x => x.FULLNAME).IsRequired();
+            builder.Property(x => x.UserName).IsRequired();
+            builder.Property(x => x.PasswordHash).IsRequired();
         }
     }
 }

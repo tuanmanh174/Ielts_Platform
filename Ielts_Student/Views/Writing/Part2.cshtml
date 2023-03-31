@@ -1,0 +1,86 @@
+﻿@model DataModel.AnswerWriting.AnswerWritingGetDTO
+@{
+    ViewData["Title"] = "Part2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form style="margin-right: 50px; margin-left:50px; margin-bottom:50px">
+    <button onclick="rP1()">Part 1</button>
+    <button onclick="rP2()">Part 2</button>
+</form>
+
+@if (Model != null)
+{
+    <form style="margin-right: 50px; margin-left:50px">
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Thí sinh</label>
+            <input disabled="disabled" type="email" class="form-control" id="exampleFormControlInput1" placeholder="@ViewBag.Name">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Đề bài</label>
+            <textarea disabled="disabled" class="form-control" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Bài làm</label>
+            <textarea class="form-control" id="answer1" value="@Model.Answer1" rows="3"></textarea>
+        </div>
+        <button>Edit</button>
+        <button onclick="Create()">Save</button>
+    </form>
+}
+else
+{
+    <form style="margin-right: 50px; margin-left:50px">
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Thí sinh</label>
+            <input disabled="disabled" type="email" class="form-control" id="exampleFormControlInput1" placeholder="@ViewBag.Name">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Đề bài</label>
+            <textarea disabled="disabled" class="form-control" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Bài làm</label>
+            <textarea class="form-control" id="answer1" rows="3"></textarea>
+        </div>
+        <button>Edit</button>
+        <button onclick="Create()">Save</button>
+    </form>
+}
+
+
+<script>
+    var myJsVariable = '@ViewBag.code';
+    function rP1() {
+        location.href = "/writing/Part1" + "/" + myJsVariable;
+    }
+
+    function rP2() {
+        location.href = "/writing/Part2" + "/" + myJsVariable;
+    }
+
+
+    function Create() {
+        var answer2 = $('#answer2').val();
+        var request = {
+            'Answer2': answer2
+        }
+        $.ajax({
+            type: 'POST',
+            url: '/Writing/Create',
+            data: {
+                request: request
+            },
+            dataType: "json",
+            success: function (res) {
+                console.log(res)
+                alert("success!");
+            },
+            error: function () {
+                alert('error!');
+            }
+        });
+    }
+</script>

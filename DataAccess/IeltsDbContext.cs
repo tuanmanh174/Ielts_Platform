@@ -28,9 +28,9 @@ namespace DataAccess
             modelBuilder.ApplyConfiguration(new QuestionTestConfiguration());
             modelBuilder.ApplyConfiguration(new ResultConfiguration());
             modelBuilder.ApplyConfiguration(new SchoolConfiguration());
-            modelBuilder.ApplyConfiguration(new StudentConfiguration());
-            modelBuilder.ApplyConfiguration(new QuestionPartConfiguration());
 
+            modelBuilder.ApplyConfiguration(new QuestionPartConfiguration());
+            modelBuilder.ApplyConfiguration(new StudentConfiguration());
             modelBuilder.ApplyConfiguration(new AppUserConfiguration());
             modelBuilder.ApplyConfiguration(new AppRoleConfiguration());
             modelBuilder.Entity<IdentityUserClaim<Guid>>().ToTable("AppUserClaims");
@@ -38,6 +38,10 @@ namespace DataAccess
             modelBuilder.Entity<IdentityUserLogin<Guid>>().ToTable("AppUserLogins").HasKey(x => x.UserId);
             modelBuilder.Entity<IdentityRoleClaim<Guid>>().ToTable("AppRoleClaims");
             modelBuilder.Entity<IdentityUserToken<Guid>>().ToTable("AppUserTokens").HasKey(x => x.UserId);
+
+            modelBuilder.Entity<IdentityUserClaim<Guid>>().ToTable("AppStudentClaims");
+            modelBuilder.Entity<IdentityUserLogin<Guid>>().ToTable("AppStudentLogin").HasKey(x => x.UserId);
+            modelBuilder.Entity<IdentityUserToken<Guid>>().ToTable("AppStudentTokens").HasKey(x => x.UserId);
 
             modelBuilder.Seed();
         }
@@ -54,5 +58,10 @@ namespace DataAccess
         public DbSet<School> Schools { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<QuestionPart> QuestionParts { get; set; }
+
+
+
+        //public DbSet<Writing> Writings { get; set; }
+        public DbSet<AnswerWriting> AnswerWritings { get; set; }
     }
 }

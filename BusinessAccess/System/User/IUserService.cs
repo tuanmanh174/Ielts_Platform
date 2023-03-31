@@ -11,6 +11,5 @@ namespace BusinessAccess.System.User
     {
         Task<string> Authenticate(LoginRequest request);
         Task<bool> Register(RegisterRequest request);
-        Task<List<UserListDTO>> GetUserLists();
     }
 }

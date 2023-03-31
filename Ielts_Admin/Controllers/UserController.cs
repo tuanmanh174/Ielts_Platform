@@ -34,7 +34,7 @@ namespace Ielts_Admin.Controllers
         public async Task<IActionResult> Login()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return PartialView();
+            return View();
         }
 
 

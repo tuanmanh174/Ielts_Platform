@@ -1,0 +1,106 @@
+﻿
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <form>
+            <div class="col-sm-12 col-xl-6">
+                <div class="bg-secondary rounded h-100 p-4">
+                    <h6 class="mb-4">Thêm Mới Học Viên</h6>
+                    <div class="form-floating mb-3">
+                        <input type="text" id="name" class="form-control">
+                        <label>Tên Học Viên</label>
+                        <span class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" id="code" class="form-control">
+                        <label>Mã Học Viên</label>
+                        <span class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" id="password" class="form-control">
+                        <label>Mật Khẩu</label>
+                        <span class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" id="passwordagain" class="form-control">
+                        <label>Nhập Lại Mật Khẩu</label>
+                        <span class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" id="phone" class="form-control">
+                        <label>Số Điện Thoại</label>
+                        <span class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" id="email" class="form-control">
+                        <label>Email</label>
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" id="lop" class="form-control">
+                        <label>Lớp</label>
+                        <span class="text-danger"></span>
+                    </div>
+
+
+                    <div class="form-floating mb-3">
+                        <input type="submit" onclick="CreateStudent()" value="Create" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+<script>
+    function CreateStudent() {
+        var studentName = $('#name').val();
+        var studentCode = $('#code').val();
+        var password = $('#password').val();
+        var passwordagain = $('#passwordagain').val();
+        var phone = $('#phone').val();
+        var email = $('#email').val();
+        var lop = $('#lop').val();
+        if (password != passwordagain) {
+            alert("Mật khẩu không giống nhau");
+            return;
+        }
+        var request = {
+            'UPDATED_BY': "",
+            'STUDENT_NAME': studentName,
+            'STUDENT_CODE': studentCode,
+            'TEL': phone,
+            'EMAIL': email,
+            'CLASS': lop,
+            'PASSWORD': password
+        }
+        $.ajax({
+            type: 'POST',
+            url: '/Student/Register',
+            data: {
+                request: request
+            },
+            dataType: "json",
+            success: function (res) {
+                console.log(res)
+                alert("success!");
+            },
+            error: function () {
+                alert('error!');
+            }
+        });
+    }
+</script>
+

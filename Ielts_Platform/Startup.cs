@@ -1,8 +1,11 @@
+using BusinessAccess.Answer;
+using BusinessAccess.AnswerWriting;
 using BusinessAccess.Exam;
 using BusinessAccess.ExamTest;
 using BusinessAccess.Part;
 using BusinessAccess.QuestionTest;
 using BusinessAccess.School;
+using BusinessAccess.System.Student;
 using BusinessAccess.System.User;
 using DataAccess;
 using DataAccess.Entities;
@@ -43,9 +46,12 @@ namespace Ielts_Platform
             services.AddTransient<IQuestionTestService, QuestionTestService>();
             services.AddTransient<IExamTestService, ExamTestService>();
             services.AddTransient<IPartService, PartService>();
+            services.AddTransient<IStudentService, StudentService>();
+            services.AddTransient<IAnswerWritingService, AnswerWritingService>();
             services.AddTransient<UserManager<AppUser>, UserManager<AppUser>>();
             services.AddTransient<SignInManager<AppUser>, SignInManager<AppUser>>();
             services.AddTransient<RoleManager<AppRole>, RoleManager<AppRole>>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Swagger Ielts", Version = "v1" });

@@ -100,7 +100,7 @@ namespace DataAccess.Migrations
                         new
                         {
                             Id = new Guid("e97e62f2-e790-46a0-b0f4-b070052544f7"),
-                            ConcurrencyStamp = "2528c72c-54d0-4c4e-aa9d-d5ff69818fd3",
+                            ConcurrencyStamp = "0b534df1-260c-4535-bfe3-2951eb1a4144",
                             Description = "Administrator Role",
                             Name = "admin",
                             NormalizedName = "admin"
@@ -180,7 +180,7 @@ namespace DataAccess.Migrations
                         {
                             Id = new Guid("d519fa35-0c44-49cc-b9a7-17b9a2364e8e"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c6c00ed2-3c03-492c-9617-d32a106059e3",
+                            ConcurrencyStamp = "fe76e757-5e88-4011-a386-1c07c7871414",
                             Dob = new DateTime(1990, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "admin.ielts@gmail.com",
                             EmailConfirmed = true,
@@ -189,7 +189,7 @@ namespace DataAccess.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "admin.ielts@gmail.com",
                             NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJpLY9Fl7eix2XZHV0hS1hsNWpNP/C867iaZlh7Qkm+x5kurBqZSVuTdDauJXtTPsQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGVn1hf/C2ncJdu+UIe/FPJlEVi3N9s9jr3D6NWOOKnloZOjQ7vTxT7C3NbKsacpGg==",
                             PhoneNumberConfirmed = false,
                             SchoolId = 0,
                             SecurityStamp = "",
@@ -525,12 +525,12 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("DataAccess.Entities.Student", b =>
                 {
-                    b.Property<int>("STUDENT_ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
-                        .HasAnnotation("SqlServer:IdentitySeed", 1)
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
 
                     b.Property<string>("CLASS")
                         .HasColumnType("nvarchar(max)");
@@ -541,33 +541,58 @@ namespace DataAccess.Migrations
                     b.Property<DateTime?>("CREATED_DATE")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("EMAIL")
+                    b.Property<string>("ConcurrencyStamp")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PASSWORD")
+                    b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("FULLNAME")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
 
                     b.Property<int?>("SCHOOL_ID")
                         .HasColumnType("int");
 
-                    b.Property<string>("STUDENT_CODE")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("STUDENT_NAME")
-                        .IsRequired()
+                    b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("TEL")
                         .HasColumnType("int");
 
-                    b.Property<string>("UPDATED_BY")
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("UPDATED_DATE")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("STUDENT_ID");
+                    b.HasKey("Id");
 
                     b.ToTable("Students");
                 });
@@ -611,7 +636,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AppUserClaims");
+                    b.ToTable("AppStudentClaims");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
@@ -631,7 +656,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("AppUserLogins");
+                    b.ToTable("AppStudentLogin");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
@@ -671,7 +696,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("AppUserTokens");
+                    b.ToTable("AppStudentTokens");
                 });
 #pragma warning restore 612, 618
         }

@@ -86,14 +86,14 @@ namespace BusinessAccess.System.User
         public async Task<List<UserListDTO>> GetUserLists()
         {
             var userListDTO = new List<UserListDTO>();
-            var lstUser =  _userManager.Users;
-            foreach(var item in lstUser)
+            var lstUser = _userManager.Users;
+            foreach (var item in lstUser)
             {
                 var usertDTO = new UserListDTO();
                 usertDTO.Email = item.Email;
                 userListDTO.Add(usertDTO);
             }
-            return  userListDTO;
+            return userListDTO;
 
         }
     }
