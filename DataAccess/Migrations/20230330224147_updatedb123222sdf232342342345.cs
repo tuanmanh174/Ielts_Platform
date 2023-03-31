@@ -7,10 +7,7 @@ namespace DataAccess.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
-                name: "StudentId",
-                table: "AnswerWritings",
-                nullable: true);
+           
 
             migrationBuilder.UpdateData(
                 table: "AppRoles",

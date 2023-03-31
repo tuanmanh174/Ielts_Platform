@@ -3,50 +3,40 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DataAccess.Migrations
 {
-    public partial class updatedb123222sdf2234 : Migration
+    public partial class droptable22 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-          
-
             migrationBuilder.UpdateData(
                 table: "AppRoles",
                 keyColumn: "Id",
                 keyValue: new Guid("e97e62f2-e790-46a0-b0f4-b070052544f7"),
                 column: "ConcurrencyStamp",
-                value: "62ac0605-6ea1-4ccd-a65f-fdb59a8487e9");
+                value: "64ef12e6-85f6-4494-8bc0-8c0a0ec34271");
 
             migrationBuilder.UpdateData(
                 table: "AppUsers",
                 keyColumn: "Id",
                 keyValue: new Guid("d519fa35-0c44-49cc-b9a7-17b9a2364e8e"),
                 columns: new[] { "ConcurrencyStamp", "PasswordHash" },
-                values: new object[] { "5460a0df-b3a0-49e4-a03c-d8938b664a15", "AQAAAAEAACcQAAAAEDV/90gDeXRElh+ucWyPhaDu1MW1HO680W+79AQGE3ctKHMg4Jx0J6VyrPuAyQ37Vg==" });
+                values: new object[] { "de966ee2-cecd-4c0e-aced-a374444e1220", "AQAAAAEAACcQAAAAEIK8u22HugXoBLMmtbfbOmO/0V18SC5+txXTXykmEUSlzLS2XyraOyYYRPWmGNZBEQ==" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<Guid>(
-                name: "StudentId",
-                table: "AnswerWritings",
-                type: "uniqueidentifier",
-                nullable: false,
-                oldClrType: typeof(int))
-                .OldAnnotation("SqlServer:Identity", "1, 1");
-
             migrationBuilder.UpdateData(
                 table: "AppRoles",
                 keyColumn: "Id",
                 keyValue: new Guid("e97e62f2-e790-46a0-b0f4-b070052544f7"),
                 column: "ConcurrencyStamp",
-                value: "1a00e856-c493-40db-ac32-4e8719f25eb9");
+                value: "726716ee-1fcf-4d42-8f90-5d0cfaa50ad4");
 
             migrationBuilder.UpdateData(
                 table: "AppUsers",
                 keyColumn: "Id",
                 keyValue: new Guid("d519fa35-0c44-49cc-b9a7-17b9a2364e8e"),
                 columns: new[] { "ConcurrencyStamp", "PasswordHash" },
-                values: new object[] { "1bd11e73-da65-45a4-9a6f-ffb0dd99b447", "AQAAAAEAACcQAAAAEOKBm2T34QCiM8MNktmejvFqzwLCUi+ImKk6FSlV2XjdFEpdhzeDe/w+hoPvnSJO7Q==" });
+                values: new object[] { "739aa279-73c5-44df-b7c4-2566e7c90ae5", "AQAAAAEAACcQAAAAEJTLOiFHQ8Prt+A7UMMU+LFH8P42qBsC6PZAT42eUn5hOBvM3/TFGEyJE+ekeEH7/w==" });
         }
     }
 }

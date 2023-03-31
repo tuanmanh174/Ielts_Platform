@@ -14,13 +14,7 @@ namespace DataAccess.Migrations
                 oldClrType: typeof(int),
                 oldType: "int");
 
-            migrationBuilder.AlterColumn<Guid>(
-                name: "Id",
-                table: "AnswerWritings",
-                nullable: false,
-                oldClrType: typeof(int),
-                oldType: "int")
-                .OldAnnotation("SqlServer:Identity", "1, 1");
+            
 
             migrationBuilder.UpdateData(
                 table: "AppRoles",

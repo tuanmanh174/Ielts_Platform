@@ -7,9 +7,7 @@ namespace DataAccess.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "StudentId",
-                table: "AnswerWritings");
+           
 
             migrationBuilder.UpdateData(
                 table: "AppRoles",
